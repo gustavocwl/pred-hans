@@ -115,6 +115,7 @@ if arquivo is not None:
         with col2:
             df_prev = df_prev.set_index('data')
             df_prev.index = df_prev.index.astype(str).str[:7]
+            df_prev = df_prev.applymap(lambda x: str(int(x)) if isinstance(x, float) and x.is_integer() else x)
             st.dataframe(df_prev.transpose())
 
 else:
